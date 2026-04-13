@@ -1,24 +1,24 @@
+;;# Viva
 envSetVal("viva.axis" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
 envSetVal("viva.traceLegend" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
 envSetVal("viva.graph" "titleFont" 'string "Arial,14,-1,5,55,0,0,0,0,0")
 envSetVal("viva.graph" "colorBank" 'string "cyan; lime; violet; orange; yellow; silver; orangeRed; white; skyBlue; springGreen; pink")
 
-envSetVal("layout" "xSnapSpacing" 'float 0.005)
-envSetVal("layout" "ySnapSpacing" 'float 0.005)
-
+;;# Schematics
 hiSetBindKey("Schematics" "None<Btn4Down>" "hiZoomInAtMouse()")
 hiSetBindKey("Schematics" "None<Btn5Down>" "hiZoomOutAtMouse()")
 hiSetBindKey("Schematics" "Ctrl<Btn4Down>" "geScroll(nil \"n\" nil)")
 hiSetBindKey("Schematics" "Ctrl<Btn5Down>" "geScroll(nil \"s\" nil)")
 
-hiSetBindKey("explorer" "Shift<Key>X" "geSave()")
-hiSetBindKey("assembler" "Shift<Key>X" "geSave()")
-
+;;# Symbol
 hiSetBindKey("Symbol" "None<Btn4Down>" "hiZoomInAtMouse()")
 hiSetBindKey("Symbol" "None<Btn5Down>" "hiZoomOutAtMouse()")
 
+;;# Layout
 hiSetBindKey("Layout" "<key>A" "leHiQuickAlign()")
 hiSetBindKey("Layout" "<key>H" "leHiRepeatCopy()")
 hiSetBindKey("Layout" "<key>p" "leHiCreateWire()")
 hiSetBindKey("Layout" "Shift<key>C" "leHiDescend()")
 hiSetBindKey("Layout" "Shift<key>X" "geSave()")
+envSetVal("layout" "xSnapSpacing" 'float 0.005)
+envSetVal("layout" "ySnapSpacing" 'float 0.005)
