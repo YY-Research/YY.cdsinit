@@ -9,6 +9,9 @@ hiSetBindKey("Schematics" "None<Btn4Down>" "hiZoomInAtMouse()")
 hiSetBindKey("Schematics" "None<Btn5Down>" "hiZoomOutAtMouse()")
 hiSetBindKey("Schematics" "Ctrl<Btn4Down>" "geScroll(nil \"n\" nil)")
 hiSetBindKey("Schematics" "Ctrl<Btn5Down>" "geScroll(nil \"s\" nil)")
+envSetVal("schematic" "symDynamicHilightOn" 'boolean t)
+envSetVal("schematic" "schDynamicNetHilightOn" 'boolean t)
+envSetVal("schematic" "schDynamicNetHilightNoIslands" 'boolean nil)
 
 ;;# Symbol
 hiSetBindKey("Symbol" "None<Btn4Down>" "hiZoomInAtMouse()")
