@@ -3,6 +3,7 @@ envSetVal("viva.axis" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
 envSetVal("viva.traceLegend" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
 envSetVal("viva.graph" "titleFont" 'string "Arial,14,-1,5,55,0,0,0,0,0")
 envSetVal("viva.graph" "colorBank" 'string "cyan; lime; violet; orange; yellow; silver; orangeRed; white; skyBlue; springGreen; pink")
+envSetVal("viva.trace" "lineThickness" 'string "thick")
 
 ;;# Schematics
 hiSetBindKey("Schematics" "None<Btn4Down>" "hiZoomInAtMouse()")
@@ -12,6 +13,8 @@ hiSetBindKey("Schematics" "Ctrl<Btn5Down>" "geScroll(nil \"s\" nil)")
 envSetVal("schematic" "symDynamicHilightOn" 'boolean t)
 envSetVal("schematic" "schDynamicNetHilightOn" 'boolean t)
 envSetVal("schematic" "schDynamicNetHilightNoIslands" 'boolean nil)
+hiSetBindKey("Schematics" "Ctrl<Key>1" "sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'dcOpPoints) sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'dcNodeVoltages)")
+hiSetBindKey("Schematics" "Ctrl<Key>0" "sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'defaults)")
 
 ;;# Symbol
 hiSetBindKey("Symbol" "None<Btn4Down>" "hiZoomInAtMouse()")
