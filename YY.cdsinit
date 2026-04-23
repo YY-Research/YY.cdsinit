@@ -1,3 +1,6 @@
+tech_list
+mos_list_all
+
 printf("\n\nLoading YY.cdsinit.....\n")
 
 ;;# Viva
@@ -39,3 +42,24 @@ envSetVal("layout" "xSnapSpacing" 'float 0.005)
 envSetVal("layout" "ySnapSpacing" 'float 0.005)
 
 printf("\tYY.cdsinit: \t Layout settings ok!\n")
+
+;;# Load Settings According to the tech
+anno_preference = "id gm rout vgs vds vdsat vth region"
+
+for(tech_num 0 (length(tech_list)-1)
+    techname = nth(tech_num tech_list)
+    if( ddGetObj(techname) then
+        printf("\n\tYY.cdsinit: \t %s detected!\n" techname)
+        mos_list = nth(tech_num mos_list_all)
+        foreach(mos_type mos_list
+            let( (cdfId)
+                cdfId = cdfGetBaseCellCDF(ddGetObj(techname mos_type))
+                when( cdfId
+                    cdfId->opPointLabelSet = anno_preference
+                )
+            )
+            printf("\t  Set annotation %s: %s \n", mos_type, anno_preference)
+        )
+        printf("\tYY.cdsinit: \t %s settings ok!\n", techname)
+    )
+)
