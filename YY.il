@@ -7,7 +7,7 @@
 ;; YY.cdsinit - Virtuoso Initialization File
 ;;================================
 ;; This file is the main entry point for custom Virtuoso settings and keybindings.
-;; Load this file in Virtuoso CIW using: load("./YY.cdsinit.il")
+;; Load this file in Virtuoso CIW using: load("./YY.il")
 ;;
 
 ;; Define the base path for this cdsinit installation

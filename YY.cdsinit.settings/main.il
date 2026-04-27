@@ -20,10 +20,15 @@ printf("\n\nLoading YY.cdsinit.....\n")
 ;; Load Technology-Specific Settings
 ;;================================
 if( !boundp('YY_cdsinit_filepath) then
-    printf("\tYY.cdsinit: \t Warning - YY_cdsinit_filepath not defined, using current directory.\n")
+    warn("YY.cdsinit: YY_cdsinit_filepath not defined, using current directory.\n")
     YY_cdsinit_filepath = "./"
 )
-load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/tech_settings.il"))
+YY_tech_settings_file = strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/tech_settings.il")
+if( isFile(YY_tech_settings_file) then
+    load(YY_tech_settings_file)
+else
+    warn("YY.cdsinit:\n\tMissing file %s, skipping technology-specific settings.\n" YY_tech_settings_file)
+)
 
 ;;================================
 ;; Viva (Waveform Viewer) Configuration
@@ -130,7 +135,9 @@ if( ddGetObj(techname) then
 anno_preference = "id gm rout vgs vds vdsat vth region"
 
 ;; Apply technology-specific MOS settings if tech_list is defined in tech_settings.il
-if(boundp('tech_list) then
+if(!boundp('tech_list) then
+    warn("YY.cdsinit:\n\ttech_list not defined, skipping MOSFET annotations.\n")
+else
     for(tech_num 0 (length(tech_list)-1)
         techname = nth(tech_num tech_list)
         ;; Check if technology library is available
