@@ -1,4 +1,9 @@
 ;;================================
+;; Filename: YY.cdsinit.settings/main.il
+;; Version: 3.0
+;; Date: April 27, 2026
+;; Last Edited By: YY
+;;================================
 ;; YY.cdsinit Settings and Keybindings
 ;;================================
 ;; This file contains configuration for Virtuoso editors:
@@ -14,6 +19,10 @@ printf("\n\nLoading YY.cdsinit.....\n")
 ;;================================
 ;; Load Technology-Specific Settings
 ;;================================
+if( !boundp('YY_cdsinit_filepath) then
+    printf("\tYY.cdsinit: \t Warning - YY_cdsinit_filepath not defined, using current directory.\n")
+    YY_cdsinit_filepath = "./"
+)
 load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/tech_settings.il"))
 
 ;;================================

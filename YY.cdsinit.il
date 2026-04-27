@@ -1,4 +1,9 @@
 ;;================================
+;; Filename: YY.cdsinit.il
+;; Version: 3.0
+;; Date: April 27, 2026
+;; Last Edited By: YY
+;;================================
 ;; YY.cdsinit - Virtuoso Initialization File
 ;;================================
 ;; This file is the main entry point for custom Virtuoso settings and keybindings.
@@ -12,4 +17,4 @@ YY_cdsinit_filepath = "./"
 
 ;; Load the main configuration file containing all settings and keybindings
 ;; This includes Viva, Schematics, Layout, Symbol editor settings, and technology annotations
-load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/main.il")
+load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/main.il"))
