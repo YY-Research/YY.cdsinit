@@ -31,67 +31,6 @@ else
 )
 
 ;;================================
-;; Viva (Waveform Viewer) Configuration
-;;================================
-;; Configure fonts for waveform viewing
-envSetVal("viva.axis" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
-envSetVal("viva.traceLegend" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
-envSetVal("viva.graph" "titleFont" 'string "Arial,14,-1,5,55,0,0,0,0,0")
-;; Set trace colors for better visibility
-envSetVal("viva.graph" "colorBank" 'string "cyan; lime; violet; orange; yellow; silver; orangeRed; white; skyBlue; springGreen; pink")
-;; Increase line thickness for trace visibility
-envSetVal("viva.trace" "lineThickness" 'string "thick")
-
-printf("\tYY.cdsinit: \t Viva settings ok!\n")
-
-;;================================
-;; Schematics Editor Configuration
-;;================================
-;; Mouse wheel zoom bindings
-hiSetBindKey("Schematics" "None<Btn4Down>" "hiZoomInAtMouse()")
-hiSetBindKey("Schematics" "None<Btn5Down>" "hiZoomOutAtMouse()")
-;; Ctrl + Mouse wheel for panning
-hiSetBindKey("Schematics" "Ctrl<Btn4Down>" "geScroll(nil \"n\" nil)")
-hiSetBindKey("Schematics" "Ctrl<Btn5Down>" "geScroll(nil \"s\" nil)")
-;; Enable dynamic highlighting of symbols and nets
-envSetVal("schematic" "symDynamicHilightOn" 'boolean t)
-envSetVal("schematic" "schDynamicNetHilightOn" 'boolean t)
-envSetVal("schematic" "schDynamicNetHilightNoIslands" 'boolean nil)
-;; Annotation keybindings
-;; Ctrl+1: Show DC operating points and voltages
-hiSetBindKey("Schematics" "Ctrl<Key>1" "sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'dcOpPoints) sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'dcNodeVoltages)")
-;; Ctrl+2: Show transient operating points and voltages
-hiSetBindKey("Schematics" "Ctrl<Key>2" "sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'tranOpPoints) sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'tranNodeVoltages)")
-;; Ctrl+0: Reset to default annotations
-hiSetBindKey("Schematics" "Ctrl<Key>0" "sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'defaults)")
-
-printf("\tYY.cdsinit: \t Schematics settings ok!\n")
-
-;;================================
-;; Symbol Editor Configuration
-;;================================
-;; Mouse wheel zoom bindings for symbol editor
-hiSetBindKey("Symbol" "None<Btn4Down>" "hiZoomInAtMouse()")
-hiSetBindKey("Symbol" "None<Btn5Down>" "hiZoomOutAtMouse()")
-
-printf("\tYY.cdsinit: \t Symbol settings ok!\n")
-
-;;================================
-;; Layout Editor Configuration
-;;================================
-;; Layout keybindings
-hiSetBindKey("Layout" "<key>A" "leHiQuickAlign()")          ;; A: Quick align
-hiSetBindKey("Layout" "<key>H" "leHiRepeatCopy()")          ;; H: Repeat copy
-hiSetBindKey("Layout" "<key>p" "leHiCreateWire()")          ;; p: Create wire
-hiSetBindKey("Layout" "Shift<key>C" "leHiDescend()")        ;; Shift+C: Descend into block
-hiSetBindKey("Layout" "Shift<key>X" "geSave()")             ;; Shift+X: Save
-;; Set snap spacing to 5nm for precise placement
-envSetVal("layout" "xSnapSpacing" 'float 0.005)
-envSetVal("layout" "ySnapSpacing" 'float 0.005)
-
-printf("\tYY.cdsinit: \t Layout settings ok!\n")
-
-;;================================
 ;; analogLib Technology Settings
 ;;================================
 ;; Define annotation preferences for passive components
@@ -159,3 +98,64 @@ else
         )
     )
 )
+
+;;================================
+;; Viva (Waveform Viewer) Configuration
+;;================================
+;; Configure fonts for waveform viewing
+envSetVal("viva.axis" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
+envSetVal("viva.traceLegend" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
+envSetVal("viva.graph" "titleFont" 'string "Arial,14,-1,5,55,0,0,0,0,0")
+;; Set trace colors for better visibility
+envSetVal("viva.graph" "colorBank" 'string "cyan; lime; violet; orange; yellow; silver; orangeRed; white; skyBlue; springGreen; pink")
+;; Increase line thickness for trace visibility
+envSetVal("viva.trace" "lineThickness" 'string "thick")
+
+printf("\tYY.cdsinit: \t Viva settings ok!\n")
+
+;;================================
+;; Schematics Editor Configuration
+;;================================
+;; Mouse wheel zoom bindings
+hiSetBindKey("Schematics" "None<Btn4Down>" "hiZoomInAtMouse()")
+hiSetBindKey("Schematics" "None<Btn5Down>" "hiZoomOutAtMouse()")
+;; Ctrl + Mouse wheel for panning
+hiSetBindKey("Schematics" "Ctrl<Btn4Down>" "geScroll(nil \"n\" nil)")
+hiSetBindKey("Schematics" "Ctrl<Btn5Down>" "geScroll(nil \"s\" nil)")
+;; Enable dynamic highlighting of symbols and nets
+envSetVal("schematic" "symDynamicHilightOn" 'boolean t)
+envSetVal("schematic" "schDynamicNetHilightOn" 'boolean t)
+envSetVal("schematic" "schDynamicNetHilightNoIslands" 'boolean nil)
+;; Annotation keybindings
+;; Ctrl+1: Show DC operating points and voltages
+hiSetBindKey("Schematics" "Ctrl<Key>1" "sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'dcOpPoints) sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'dcNodeVoltages)")
+;; Ctrl+2: Show transient operating points and voltages
+hiSetBindKey("Schematics" "Ctrl<Key>2" "sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'tranOpPoints) sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'tranNodeVoltages)")
+;; Ctrl+0: Reset to default annotations
+hiSetBindKey("Schematics" "Ctrl<Key>0" "sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'defaults)")
+
+printf("\tYY.cdsinit: \t Schematics settings ok!\n")
+
+;;================================
+;; Symbol Editor Configuration
+;;================================
+;; Mouse wheel zoom bindings for symbol editor
+hiSetBindKey("Symbol" "None<Btn4Down>" "hiZoomInAtMouse()")
+hiSetBindKey("Symbol" "None<Btn5Down>" "hiZoomOutAtMouse()")
+
+printf("\tYY.cdsinit: \t Symbol settings ok!\n")
+
+;;================================
+;; Layout Editor Configuration
+;;================================
+;; Layout keybindings
+hiSetBindKey("Layout" "<key>A" "leHiQuickAlign()")          ;; A: Quick align
+hiSetBindKey("Layout" "<key>H" "leHiRepeatCopy()")          ;; H: Repeat copy
+hiSetBindKey("Layout" "<key>p" "leHiCreateWire()")          ;; p: Create wire
+hiSetBindKey("Layout" "Shift<key>C" "leHiDescend()")        ;; Shift+C: Descend into block
+hiSetBindKey("Layout" "Shift<key>X" "geSave()")             ;; Shift+X: Save
+;; Set snap spacing to 5nm for precise placement
+envSetVal("layout" "xSnapSpacing" 'float 0.005)
+envSetVal("layout" "ySnapSpacing" 'float 0.005)
+
+printf("\tYY.cdsinit: \t Layout settings ok!\n")
