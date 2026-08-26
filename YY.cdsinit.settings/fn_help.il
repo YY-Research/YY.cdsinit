@@ -8,5 +8,5 @@
 ;;================================
 
 procedure( YY_help()
-    printf("help")
+    YY_print("This is the help message for YY.cdsinit.")
 )
