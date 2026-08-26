@@ -109,7 +109,9 @@ envSetVal("viva.axis" "font" 'string "Arial,14,-1,5,50,0,0,0,0,0")
 envSetVal("viva.traceLegend" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
 envSetVal("viva.graph" "titleFont" 'string "Arial,14,-1,5,55,0,0,0,0,0")
 ;; Set trace colors for better visibility
-envSetVal("viva.graph" "colorBank" 'string "#74ffff; #668CFF; #FF9BFF; #FFDF9F; #B4FF7D; #1FADAD; #2B53F2; #B350AF; #B4632C; #64A649; #00FFFF; #00FF00; #FFFF00; #C0C0C0; #808080")
+envSetVal("viva.rectGraph" "background" 'string "white")
+envSetVal("viva.graphFrame" "background" 'string "white")
+envSetVal("viva.graph" "colorBank" 'string "#EA5252; #C38720; #4CAF50; #4B9CD3; #AB69C6; #FF9BFF; #FFDF9F; #B4FF7D; #74ffff; #668CFF; #953434; #b06000; #357a38; #0050B0; #8d3e7f; #FF0000; #FF00FF; #0000FF; #3F3F3F; #A3A3A3")
 ;; Increase line thickness for trace visibility
 envSetVal("viva.trace" "lineThickness" 'string "thick")
 
