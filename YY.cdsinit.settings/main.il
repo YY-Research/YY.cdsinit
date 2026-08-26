@@ -1,7 +1,7 @@
 ;;================================
 ;; Filename: YY.cdsinit.settings/main.il
-;; Version: 3.0
-;; Date: April 27, 2026
+;; Version: 4.0.0
+;; Date: Aug. 26, 2026
 ;; Last Edited By: YY
 ;;================================
 ;; YY.cdsinit Settings and Keybindings
@@ -15,20 +15,8 @@
 ;;
 
 printf("\n\nLoading YY.cdsinit.....\n")
-
-;;================================
-;; Load Technology-Specific Settings
-;;================================
-if( !boundp('YY_cdsinit_filepath) then
-    warn("YY.cdsinit: YY_cdsinit_filepath not defined, using current directory.\n")
-    YY_cdsinit_filepath = "./"
-)
-YY_tech_settings_file = strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/tech_settings.il")
-if( isFile(YY_tech_settings_file) then
-    load(YY_tech_settings_file)
-else
-    warn("YY.cdsinit:\n\tMissing file %s, skipping technology-specific settings.\n" YY_tech_settings_file)
-)
+load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/fn_cdf.il"))
+load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/fn_help.il"))
 
 ;;================================
 ;; analogLib Technology Settings
@@ -64,6 +52,20 @@ if( ddGetObj(techname) then
         printf("\t  Set annotation %s: %s \n", cap_type, cap_anno_preference)
     )
     printf("\tYY.cdsinit: \t %s settings ok!\n", techname)
+)
+
+;;================================
+;; Load Technology-Specific Settings
+;;================================
+if( !boundp('YY_cdsinit_filepath) then
+    warn("YY.cdsinit: YY_cdsinit_filepath not defined, using current directory.\n")
+    YY_cdsinit_filepath = "./"
+)
+YY_tech_settings_file = strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/tech_settings.il")
+if( isFile(YY_tech_settings_file) then
+    load(YY_tech_settings_file)
+else
+    warn("YY.cdsinit:\n\tMissing file %s, skipping technology-specific settings.\n" YY_tech_settings_file)
 )
 
 ;;================================
@@ -103,7 +105,7 @@ else
 ;; Viva (Waveform Viewer) Configuration
 ;;================================
 ;; Configure fonts for waveform viewing
-envSetVal("viva.axis" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
+envSetVal("viva.axis" "font" 'string "Arial,14,-1,5,50,0,0,0,0,0")
 envSetVal("viva.traceLegend" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
 envSetVal("viva.graph" "titleFont" 'string "Arial,14,-1,5,55,0,0,0,0,0")
 ;; Set trace colors for better visibility
@@ -159,3 +161,5 @@ envSetVal("layout" "xSnapSpacing" 'float 0.005)
 envSetVal("layout" "ySnapSpacing" 'float 0.005)
 
 printf("\tYY.cdsinit: \t Layout settings ok!\n")
+
+
