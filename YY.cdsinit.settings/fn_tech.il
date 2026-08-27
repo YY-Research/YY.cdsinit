@@ -1,6 +1,6 @@
 ;;================================
 ;; Filename: YY.cdsinit.settings/fn_tech.il
-;; Version: 4.0.0
+;; Version: 4.1.0
 ;; Date: Aug. 27, 2026
 ;; Last Edited By: YY
 ;;================================

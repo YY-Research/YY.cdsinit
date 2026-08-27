@@ -1,6 +1,6 @@
 ;;================================
 ;; Filename: YY.cdsinit.settings/fn_cdf.il
-;; Version: 4.0.0
+;; Version: 4.1.0
 ;; Date: Aug. 26, 2026
 ;; Last Edited By: YY
 ;;================================
@@ -20,7 +20,7 @@ procedure( YY_error(print_str)
 )
 
 procedure( YY_init()
-    if( boundp('YY_initialized) then
+    if( !boundp('YY_initialized) then
         YY_initialized = 1
         ddsOpenLibManager()
     )
