@@ -12,11 +12,21 @@
 ;; - Symbol editor (keybindings)
 ;; - Layout editor (keybindings and snap spacing)
 ;; - Technology-specific component annotations
-;;
 
-printf("\n\nLoading YY.cdsinit.....\n")
+;; Load supporting functions and settings
 load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/fn_cdf.il"))
 load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/fn_help.il"))
+load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/fn_tech.il"))
+YY_print("Loading YY.cdsinit.....")
+
+;; Load editor-specific settings
+load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/st_symbol.il"))
+load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/st_schematic.il"))
+load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/st_layout.il"))
+load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/st_viva.il"))
+
+;; Setting Parameters
+YY_layout_snap_spacing = 0.005  ;; Layout snap spacing in microns (5nm) (default)
 
 ;;================================
 ;; analogLib Technology Settings
