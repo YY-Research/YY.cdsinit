@@ -97,7 +97,7 @@ procedure( YY_autosync_CDF(libName cellName)
             )
 
             foreach(p pParList
-                YY_update_CDF(libName cellName p "")
+                _YY_update_CDF(libName cellName p "")
             )
             printf("\tYY.cdsinit: \t Successfully sync %d pPar from schematic to CDF\n" length(pParList))
         else
@@ -231,7 +231,7 @@ procedure( YY_set_pPar(libName cellName)
                 )
                 
                 ;; Call your existing function to update/create the parameter
-                YY_update_CDF(libName cellName p val)
+                _YY_update_CDF(libName cellName p val)
             )
             
             printf("\n\tYY.cdsinit: \t Finished updating pPar default values for %s/%s.\n" libName cellName)
