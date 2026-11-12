@@ -16,9 +16,10 @@ procedure( YY_layout_settings(layout_spacing)
     hiSetBindKey("Layout" "<key>P" "leHiCreateWire()")          ;; p: Create wire
     hiSetBindKey("Layout" "Shift<key>C" "leHiDescend()")        ;; Shift + c: Descend into block
     hiSetBindKey("Layout" "Shift<key>X" "geSave()")             ;; Shift + x: Save
+    hiSetBindKey("Layout" "<Key>[" "geTogglePartialSelect()")
     ;; Set snap spacing to 5nm for precise placement
     envSetVal("layout" "xSnapSpacing" 'float layout_spacing)
     envSetVal("layout" "ySnapSpacing" 'float layout_spacing)
 
-    printf("\tYY.cdsinit: \t Layout settings ok!\n")
+    YY_print("Layout settings ok!\n")
 )

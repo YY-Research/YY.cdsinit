@@ -7,16 +7,25 @@
 ;; YY.cdsinit CDF Settings
 ;;================================
 
-procedure( YY_print(print_str)
-    printf("\tYY.cdsinit: \t %s\n", print_str)
+procedure( YY_print( format_str @rest args )
+    let( (new_format)
+        new_format = strcat("\tYY.cdsinit: \t " format_str "\n")
+        apply('printf cons(new_format args))
+    )
 )
 
-procedure( YY_warn(print_str)
-    warn("\tYY.cdsinit: \t %s\n", print_str)
+procedure( YY_warn( format_str @rest args )
+    let( (new_format)
+        new_format = strcat("\tYY.cdsinit: \t " format_str "\n")
+        apply('warn cons(new_format args))
+    )
 )
 
-procedure( YY_error(print_str)
-    error("\tYY.cdsinit: \t %s\n", print_str)
+procedure( YY_error( format_str @rest args )
+    let( (new_format)
+        new_format = strcat("\tYY.cdsinit: \t " format_str "\n")
+        apply('error cons(new_format args))
+    )
 )
 
 procedure( YY_init()
@@ -238,7 +247,6 @@ procedure( YY_set_pPar(libName cellName)
         else
             printf("\tYY.cdsinit: \t No pPar found in schematic for %s/%s.\n" libName cellName)
         )
-        
         t ; Return true upon completion
     )
 )
