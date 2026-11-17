@@ -9,6 +9,7 @@
 
 procedure( YY_layout_settings(layout_spacing)
     hiSetBindKey("Layout" "<key>A" "leHiQuickAlign()")          ;; a: Quick align
+    hiSetBindKey("Layout" "<Key>F4" "geTogglePartialSelect()")  ;; F4: Toggle partial select
     hiSetBindKey("Layout" "<key>C" "leHiCopy()")                ;; c: Copy
     hiSetBindKey("Layout" "<key>E" "leHiEditDisplayOptions()")  ;; e: Edit display options
     hiSetBindKey("Layout" "<key>H" "leHiRepeatCopy()")          ;; h: Repeat copy
@@ -16,10 +17,8 @@ procedure( YY_layout_settings(layout_spacing)
     hiSetBindKey("Layout" "<key>P" "leHiCreateWire()")          ;; p: Create wire
     hiSetBindKey("Layout" "Shift<key>C" "leHiDescend()")        ;; Shift + c: Descend into block
     hiSetBindKey("Layout" "Shift<key>X" "geSave()")             ;; Shift + x: Save
-    hiSetBindKey("Layout" "<Key>[" "geTogglePartialSelect()")
-    ;; Set snap spacing to 5nm for precise placement
-    envSetVal("layout" "xSnapSpacing" 'float layout_spacing)
-    envSetVal("layout" "ySnapSpacing" 'float layout_spacing)
+    envSetVal("layout" "xSnapSpacing" 'float layout_spacing)    ;; Set snap x spacing
+    envSetVal("layout" "ySnapSpacing" 'float layout_spacing)    ;; Set snap y spacing
 
     YY_print("Layout settings ok!\n")
 )
