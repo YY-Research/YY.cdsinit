@@ -1,7 +1,7 @@
 ;;================================
 ;; Filename: YY.cdsinit.settings/fn_help.il
-;; Version: 4.0.0
-;; Date: Aug. 26, 2026
+;; Version: 5.0.0
+;; Date: Nov. 17, 2026
 ;; Last Edited By: YY
 ;;================================
 ;; YY.cdsinit Help Function

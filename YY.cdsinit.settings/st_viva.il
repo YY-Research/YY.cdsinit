@@ -1,6 +1,6 @@
 ;;================================
 ;; Filename: YY.cdsinit.settings/st_viva.il
-;; Version: 4.0.0
+;; Version: 5.0.0
 ;; Date: Aug. 26, 2026
 ;; Last Edited By: YY
 ;;================================

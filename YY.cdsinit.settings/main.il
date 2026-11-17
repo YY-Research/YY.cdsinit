@@ -1,7 +1,7 @@
 ;;================================
 ;; Filename: YY.cdsinit.settings/main.il
-;; Version: 4.1.0
-;; Date: Aug. 27, 2026
+;; Version: 5.0.0
+;; Date: Nov. 17, 2026
 ;; Last Edited By: YY
 ;;================================
 ;; YY.cdsinit Settings and Keybindings
@@ -29,165 +29,21 @@ load(strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/st_viva.il"))
 ;; Setting Parameters
 YY_layout_snap_spacing = 0.005  ;; Layout snap spacing in microns (5nm) (default)
 
-;; Initialize YY.cdsinit
-YY_init()
+YY_print("[Usage] Type YY() to activate YY.cdsinit settings and keybindings.")
+YY_print("        Type YY_help() to see a list of bindkeys.")
 
-;; Define library-specific settings
-YY_analogLib_settings()
-YY_load_tech_settings()
+procedure( YY()  ;; Use command YY() to activate YY.cdsinit settings and keybindings
+    ;; Initialize YY.cdsinit
+    YY_init()
 
-;; Define bindkeys
-YY_ciw_settings()
-YY_schematic_settings()
-YY_symbol_settings()
-YY_layout_settings(YY_layout_snap_spacing)
-YY_viva_settings()
+    ;; Define library-specific settings
+    YY_analogLib_settings()
+    YY_load_tech_settings()
 
-
-; ;;================================
-; ;; analogLib Technology Settings
-; ;;================================
-; ;; Define annotation preferences for passive components
-; res_anno_preference = "res v i pwr"    ;; Resistor: display resistance, voltage, current, power
-; cap_anno_preference = "cap v"          ;; Capacitor: display capacitance, voltage
-; techname = "analogLib"
-; res_list = list("res")
-; cap_list = list("cap")
-
-; ;; Apply annotations if analogLib technology is available
-; if( ddGetObj(techname) then
-;     printf("\n\tYY.cdsinit: \t %s detected!\n" techname)
-;     ;; Apply resistor annotations
-;     foreach(res_type res_list
-;         let( (cdfId)
-;             cdfId = cdfGetBaseCellCDF(ddGetObj(techname res_type))
-;             when( cdfId
-;                 cdfId->opPointLabelSet = res_anno_preference
-;             )
-;         )
-;         printf("\t  Set annotation %s: %s \n", res_type, res_anno_preference)
-;     )
-;     ;; Apply capacitor annotations
-;     foreach(cap_type cap_list
-;         let( (cdfId)
-;             cdfId = cdfGetBaseCellCDF(ddGetObj(techname cap_type))
-;             when( cdfId
-;                 cdfId->opPointLabelSet = cap_anno_preference
-;             )
-;         )
-;         printf("\t  Set annotation %s: %s \n", cap_type, cap_anno_preference)
-;     )
-;     printf("\tYY.cdsinit: \t %s settings ok!\n", techname)
-; )
-
-; ;;================================
-; ;; Load Technology-Specific Settings
-; ;;================================
-; if( !boundp('YY_cdsinit_filepath) then
-;     warn("YY.cdsinit: YY_cdsinit_filepath not defined, using current directory.\n")
-;     YY_cdsinit_filepath = "./"
-; )
-; YY_tech_settings_file = strcat(YY_cdsinit_filepath, "YY.cdsinit.settings/tech_settings.il")
-; if( isFile(YY_tech_settings_file) then
-;     load(YY_tech_settings_file)
-; else
-;     warn("YY.cdsinit:\n\tMissing file %s, skipping technology-specific settings.\n" YY_tech_settings_file)
-; )
-
-; ;;================================
-; ;; Process-Specific MOSFET Annotations
-; ;;================================
-; ;; Define annotation preferences for MOS transistors
-; ;; These display key device parameters during simulation results annotation
-; anno_preference = "id gm rout vgs vds vdsat vth region"
-
-; ;; Apply technology-specific MOS settings if tech_list is defined in tech_settings.il
-; if(!boundp('tech_list) then
-;     warn("YY.cdsinit:\n\ttech_list not defined, skipping MOSFET annotations.\n")
-; else
-;     for(tech_num 0 (length(tech_list)-1)
-;         techname = nth(tech_num tech_list)
-;         ;; Check if technology library is available
-;         if( ddGetObj(techname) then
-;             printf("\n\tYY.cdsinit: \t %s detected!\n" techname)
-;             ;; Get the MOS device list for this technology
-;             mos_list = nth(tech_num mos_list_all)
-;             ;; Apply annotations to each MOS device type
-;             foreach(mos_type mos_list
-;                 let( (cdfId)
-;                     cdfId = cdfGetBaseCellCDF(ddGetObj(techname mos_type))
-;                     when( cdfId
-;                         cdfId->opPointLabelSet = anno_preference
-;                     )
-;                 )
-;                 printf("\t  Set annotation %s: %s \n", mos_type, anno_preference)
-;             )
-;             printf("\tYY.cdsinit: \t %s settings ok!\n", techname)
-;         )
-;     )
-; )
-
-; ;;================================
-; ;; Viva (Waveform Viewer) Configuration
-; ;;================================
-; ;; Configure fonts for waveform viewing
-; envSetVal("viva.axis" "font" 'string "Arial,14,-1,5,50,0,0,0,0,0")
-; envSetVal("viva.traceLegend" "font" 'string "Arial,12,-1,5,50,0,0,0,0,0")
-; envSetVal("viva.graph" "titleFont" 'string "Arial,14,-1,5,55,0,0,0,0,0")
-; ;; Set trace colors for better visibility
-; envSetVal("viva.rectGraph" "background" 'string "white")
-; envSetVal("viva.graphFrame" "background" 'string "white")
-; envSetVal("viva.graph" "colorBank" 'string "#EA5252; #C38720; #4CAF50; #4B9CD3; #AB69C6; #FF9BFF; #FFDF9F; #B4FF7D; #74ffff; #668CFF; #953434; #b06000; #357a38; #0050B0; #8d3e7f; #FF0000; #FF00FF; #0000FF; #3F3F3F; #A3A3A3")
-; ;; Increase line thickness for trace visibility
-; envSetVal("viva.trace" "lineThickness" 'string "thick")
-
-; printf("\tYY.cdsinit: \t Viva settings ok!\n")
-
-; ;;================================
-; ;; Schematics Editor Configuration
-; ;;================================
-; ;; Mouse wheel zoom bindings
-; hiSetBindKey("Schematics" "None<Btn4Down>" "hiZoomInAtMouse()")
-; hiSetBindKey("Schematics" "None<Btn5Down>" "hiZoomOutAtMouse()")
-; ;; Ctrl + Mouse wheel for panning
-; hiSetBindKey("Schematics" "Ctrl<Btn4Down>" "geScroll(nil \"n\" nil)")
-; hiSetBindKey("Schematics" "Ctrl<Btn5Down>" "geScroll(nil \"s\" nil)")
-; ;; Enable dynamic highlighting of symbols and nets
-; envSetVal("schematic" "symDynamicHilightOn" 'boolean t)
-; envSetVal("schematic" "schDynamicNetHilightOn" 'boolean t)
-; envSetVal("schematic" "schDynamicNetHilightNoIslands" 'boolean nil)
-; ;; Annotation keybindings
-; ;; Ctrl+1: Show DC operating points and voltages
-; hiSetBindKey("Schematics" "Ctrl<Key>1" "sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'dcOpPoints) sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'dcNodeVoltages)")
-; ;; Ctrl+2: Show transient operating points and voltages
-; hiSetBindKey("Schematics" "Ctrl<Key>2" "sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'tranOpPoints) sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'tranNodeVoltages)")
-; ;; Ctrl+0: Reset to default annotations
-; hiSetBindKey("Schematics" "Ctrl<Key>0" "sevAnnotateResults(sevSession(hiGetCurrentWindow()) 'defaults)")
-
-; printf("\tYY.cdsinit: \t Schematics settings ok!\n")
-
-; ;;================================
-; ;; Symbol Editor Configuration
-; ;;================================
-; ;; Mouse wheel zoom bindings for symbol editor
-; hiSetBindKey("Symbol" "None<Btn4Down>" "hiZoomInAtMouse()")
-; hiSetBindKey("Symbol" "None<Btn5Down>" "hiZoomOutAtMouse()")
-
-; printf("\tYY.cdsinit: \t Symbol settings ok!\n")
-
-; ;;================================
-; ;; Layout Editor Configuration
-; ;;================================
-; ;; Layout keybindings
-; hiSetBindKey("Layout" "<key>A" "leHiQuickAlign()")          ;; A: Quick align
-; hiSetBindKey("Layout" "<key>H" "leHiRepeatCopy()")          ;; H: Repeat copy
-; hiSetBindKey("Layout" "<key>p" "leHiCreateWire()")          ;; p: Create wire
-; hiSetBindKey("Layout" "Shift<key>C" "leHiDescend()")        ;; Shift+C: Descend into block
-; hiSetBindKey("Layout" "Shift<key>X" "geSave()")             ;; Shift+X: Save
-; ;; Set snap spacing to 5nm for precise placement
-; envSetVal("layout" "xSnapSpacing" 'float 0.005)
-; envSetVal("layout" "ySnapSpacing" 'float 0.005)
-
-; printf("\tYY.cdsinit: \t Layout settings ok!\n")
-
-
+    ;; Define bindkeys
+    YY_ciw_settings()
+    YY_schematic_settings()
+    YY_symbol_settings()
+    YY_layout_settings(YY_layout_snap_spacing)
+    YY_viva_settings()
+)
