@@ -1,7 +1,7 @@
 ;;================================
 ;; Filename: YY.cdsinit.il
-;; Version: 3.0
-;; Date: April 27, 2026
+;; Version: 5.0.1
+;; Date: Nov. 18, 2026
 ;; Last Edited By: YY
 ;;================================
 ;; YY.cdsinit - Virtuoso Initialization File
